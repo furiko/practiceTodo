@@ -6,6 +6,7 @@
 //  Copyright © 2018年 中山楓太. All rights reserved.
 //
 
+//reviewを受けて修正開始 2018/09/21
 import UIKit
 import RealmSwift
 
