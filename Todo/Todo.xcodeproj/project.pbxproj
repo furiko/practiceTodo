@@ -15,6 +15,8 @@
 		CBA32FE3212006000024A2FA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CBA32FE1212006000024A2FA /* Main.storyboard */; };
 		CBA32FE5212006010024A2FA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CBA32FE4212006010024A2FA /* Assets.xcassets */; };
 		CBA32FE8212006010024A2FA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CBA32FE6212006010024A2FA /* LaunchScreen.storyboard */; };
+		CBE446DE2154FE3F00E137BF /* NumberedTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE446DD2154FE3F00E137BF /* NumberedTask.swift */; };
+		CBE446E02154FE5E00E137BF /* RealmUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE446DF2154FE5E00E137BF /* RealmUtils.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +31,8 @@
 		CBA32FE4212006010024A2FA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CBA32FE7212006010024A2FA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CBA32FE9212006010024A2FA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CBE446DD2154FE3F00E137BF /* NumberedTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberedTask.swift; sourceTree = "<group>"; };
+		CBE446DF2154FE5E00E137BF /* RealmUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmUtils.swift; sourceTree = "<group>"; };
 		CBE97C8F2143A4B8008C6487 /* project.xcworkspace */ = {isa = PBXFileReference; lastKnownFileType = wrapper.workspace; name = project.xcworkspace; path = Todo.xcodeproj/project.xcworkspace; sourceTree = "<group>"; };
 		D95187BD8650A7FD491B921F /* Pods-Todo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Todo.release.xcconfig"; path = "Pods/Target Support Files/Pods-Todo/Pods-Todo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -88,6 +92,8 @@
 				CBA32FDF212006000024A2FA /* ViewController.swift */,
 				CB3E14F72131807800707B50 /* TodoDetailViewController.swift */,
 				CB7596B9213CC3130093AAA8 /* TodoListViewController.swift */,
+				CBE446DD2154FE3F00E137BF /* NumberedTask.swift */,
+				CBE446DF2154FE5E00E137BF /* RealmUtils.swift */,
 				CBA32FE1212006000024A2FA /* Main.storyboard */,
 				CBA32FE4212006010024A2FA /* Assets.xcassets */,
 				CBA32FE6212006010024A2FA /* LaunchScreen.storyboard */,
@@ -170,16 +176,12 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Todo/Pods-Todo-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
@@ -215,7 +217,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				CB7596BA213CC3130093AAA8 /* TodoListViewController.swift in Sources */,
+				CBE446E02154FE5E00E137BF /* RealmUtils.swift in Sources */,
 				CB3E14F82131807800707B50 /* TodoDetailViewController.swift in Sources */,
+				CBE446DE2154FE3F00E137BF /* NumberedTask.swift in Sources */,
 				CBA32FE0212006000024A2FA /* ViewController.swift in Sources */,
 				CBA32FDE212006000024A2FA /* AppDelegate.swift in Sources */,
 			);

@@ -26,20 +26,20 @@ import RealmSwift
     @objc dynamic var content = ""
 } */
 
-final class numberedTask : Object { //TaskクラスにprimaryKeyを実装した
+/*final class numberedTask : Object { //TaskクラスにprimaryKeyを実装した
     @objc dynamic var title = ""
     @objc dynamic var content = ""
     @objc dynamic var id = 0
     override static func primaryKey() -> String? {
      return "id"
     }
-}
+}*/
 
 class TodoDetailViewController: UIViewController {
     
     var cellRowNumber : Int!
-    lazy var realm = try! Realm()
-    var tasks : Results<numberedTask>!
+//    lazy var realm = try! Realm()
+    var tasks : Results<NumberedTask>!
     var titleText : String? //TodoListViewControllerから受け取る用
     var contentText : String?   //TodoListViewControllerから受け取る用
     
@@ -48,8 +48,8 @@ class TodoDetailViewController: UIViewController {
     
     @IBAction func writeRealm() {
         do {
-            let realm = try Realm()
-            let task = numberedTask()
+//            let realm = try Realm()
+            let task = NumberedTask()
             
             task.title = self.titleView!.text!
             task.content = self.textView!.text!

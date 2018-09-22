@@ -13,14 +13,14 @@ import RealmSwift
 class TodoListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var addButton: UIButton!
     var todos = ["料理","洗濯","掃除"]
-    lazy var realm = try! Realm()
-    var tasks : Results<numberedTask>!
+//    lazy var realm = try! Realm()
+    var tasks : Results<NumberedTask>!
     var rowNumber :Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         print("TodoList")
-        tasks = realm.objects(numberedTask.self)
+        tasks = realm.objects(NumberedTask.self)
         // Do any additional setup after loading the view.
         getRealmData()
     }
@@ -29,7 +29,7 @@ class TodoListViewController: UIViewController, UITableViewDelegate, UITableView
     func getRealmData(){
         do {
             let realm = try Realm()
-            let results = realm.objects(numberedTask.self)
+            let results = realm.objects(NumberedTask.self)
             print("Realm全データ", results.count)
             print(results)
         } catch {}
@@ -47,7 +47,8 @@ class TodoListViewController: UIViewController, UITableViewDelegate, UITableView
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MyCell", for: indexPath)
-        let Task = tasks[indexPath.row]
+        let realmUtil = RealmUtils()
+        let Task = realmUtil.getTodoData(indexPath.row)
         cell.textLabel!.text = Task.title
 
         return cell
@@ -56,11 +57,8 @@ class TodoListViewController: UIViewController, UITableViewDelegate, UITableView
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //選択したcellの行数
         rowNumber = indexPath.row
-        
-        if rowNumber != nil {
-            print("rowNumber = ", rowNumber!)
-            performSegue(withIdentifier: "toTodoDetailViewController", sender: nil)
-        }
+        print("rowNumber = ", rowNumber!)
+        performSegue(withIdentifier: "toTodoDetailViewController", sender: nil)
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
