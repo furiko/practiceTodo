@@ -12,15 +12,16 @@ import RealmSwift
 
 class TodoListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var addButton: UIButton!
+    var utils = RealmUtils()
     var todos = ["料理","洗濯","掃除"]
 //    lazy var realm = try! Realm()
     var tasks : Results<NumberedTask>!
     var rowNumber :Int?
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         print("TodoList")
-        tasks = realm.objects(NumberedTask.self)
+//        tasks = realm.objects(NumberedTask.self)
         // Do any additional setup after loading the view.
         getRealmData()
     }
@@ -48,7 +49,7 @@ class TodoListViewController: UIViewController, UITableViewDelegate, UITableView
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MyCell", for: indexPath)
         let realmUtil = RealmUtils()
-        let Task = realmUtil.getTodoData(indexPath.row)
+        let Task = realmUtil.getRealmData(indexPath.row)
         cell.textLabel!.text = Task.title
 
         return cell

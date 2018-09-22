@@ -36,7 +36,7 @@ import RealmSwift
 }*/
 
 class TodoDetailViewController: UIViewController {
-    
+    let utils = RealmUtils()
     var cellRowNumber : Int!
 //    lazy var realm = try! Realm()
     var tasks : Results<NumberedTask>!
@@ -47,7 +47,8 @@ class TodoDetailViewController: UIViewController {
     @IBOutlet weak var textView: UITextView!
     
     @IBAction func writeRealm() {
-        do {
+        utils.writeToRealm(self.titleView!.text!, self.textView!.text!, cellRowNumber!)
+/*        do {
 //            let realm = try Realm()
             let task = NumberedTask()
             
@@ -65,7 +66,7 @@ class TodoDetailViewController: UIViewController {
             /*var config = Realm.Configuration()
             config.deleteRealmIfMigrationNeeded = true
             let realm = try! Realm(configuration: config)*/
-        }
+        }*/
     }
 
     override func viewDidLoad() {
