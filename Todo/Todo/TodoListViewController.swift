@@ -16,25 +16,26 @@ class TodoListViewController: UIViewController, UITableViewDelegate, UITableView
     var todos = ["料理","洗濯","掃除"]
 //    lazy var realm = try! Realm()
     var tasks : Results<NumberedTask>!
-    var rowNumber :Int?
+    var rowNumber :Int = 0
 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         print("TodoList")
-//        tasks = realm.objects(NumberedTask.self)
+        tasks = utils.getResults()  //Todoリストを取得
         // Do any additional setup after loading the view.
-        getRealmData()
+        utils.getRealmAllData()
     }
     
     //Todoのデータを全取得
-    func getRealmData(){
+/*    func getRealmData(){
         do {
             let realm = try Realm()
             let results = realm.objects(NumberedTask.self)
             print("Realm全データ", results.count)
             print(results)
         } catch {}
-    }
+    }*/
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -42,14 +43,12 @@ class TodoListViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //revise to return List's number
         return tasks.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MyCell", for: indexPath)
-        let realmUtil = RealmUtils()
-        let Task = realmUtil.getRealmData(indexPath.row)
+        let Task = utils.getRealmData(indexPath.row, tasks)
         cell.textLabel!.text = Task.title
 
         return cell
@@ -58,7 +57,7 @@ class TodoListViewController: UIViewController, UITableViewDelegate, UITableView
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //選択したcellの行数
         rowNumber = indexPath.row
-        print("rowNumber = ", rowNumber!)
+        print("rowNumber = ", rowNumber)
         performSegue(withIdentifier: "toTodoDetailViewController", sender: nil)
     }
     
@@ -86,10 +85,10 @@ class TodoListViewController: UIViewController, UITableViewDelegate, UITableView
         let identifier = segue.identifier
         if identifier == "toTodoDetailViewController" { //tapped cell
             let next : TodoDetailViewController = (segue.destination as? TodoDetailViewController)!
-            let Task = tasks[rowNumber!]
+            let Task = utils.getRealmData(rowNumber, tasks)
             next.titleText = Task.title
             next.contentText = Task.content
-            next.cellRowNumber = rowNumber!
+            next.cellRowNumber = rowNumber
         } else if identifier == "addTask" { //pushed add button
             let next : TodoDetailViewController = (segue.destination as? TodoDetailViewController)!
             next.cellRowNumber = tasks.count

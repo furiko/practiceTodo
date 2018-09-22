@@ -22,7 +22,7 @@ class RealmUtils {
         } catch {}
     }
     
-    func getRealmData(_ number: Int) -> NumberedTask {
+    func getRealmData(_ number: Int, _ tasks: Results<NumberedTask> ) -> NumberedTask {
         return tasks[number]
     }
     
@@ -58,5 +58,9 @@ class RealmUtils {
         /*}catch {
             print("failed to deleteAll")
         }*/
+    }
+    
+    func getResults() -> Results<NumberedTask> {
+        return realm.objects(NumberedTask.self)
     }
 }
