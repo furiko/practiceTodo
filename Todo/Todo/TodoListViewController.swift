@@ -13,6 +13,7 @@ import RealmSwift
 class TodoListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var addButton: UIButton!
     var utils = RealmUtils()
+    var opTask = operateTask()
     var todos = ["料理","洗濯","掃除"]
 //    lazy var realm = try! Realm()
     var tasks : Results<NumberedTask>!
@@ -24,7 +25,7 @@ class TodoListViewController: UIViewController, UITableViewDelegate, UITableView
         print("TodoList")
         tasks = utils.getResults()  //Todoリストを取得
         // Do any additional setup after loading the view.
-        utils.getRealmAllData()
+        opTask.printTodoAll()
     }
     
     //Todoのデータを全取得

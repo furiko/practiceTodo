@@ -13,31 +13,31 @@ class RealmUtils {
     lazy var realm = try! Realm()
     var tasks : Results<NumberedTask>!
     
-    func getRealmAllData(){
-        do {
-            let realm = try Realm()
-            let results = realm.objects(NumberedTask.self)
-            print("Realm全データ", results.count)
-            print(results)
-        } catch {}
-    }
+/*    func getRealmAllData(){
+        
+//            let realm = try Realm()
+        let results = realm.objects(NumberedTask.self)
+        print("Realm全データ", results.count)
+        print(results)
+        
+    }*/
     
     func getRealmData(_ number: Int, _ tasks: Results<NumberedTask> ) -> NumberedTask {
         return tasks[number]
     }
     
-    func writeToRealm(_ title: String, _ content: String, _ id: Int) {
+    func writeToRealm(_ obj: NumberedTask) {
 //        do {
             //            let realm = try Realm()
-            let task = NumberedTask()
+            /*let task = NumberedTask()
             
             task.title = title
             task.content = content
-            task.id = id
+            task.id = id*/
             
             try! realm.write {
-                realm.add(task, update: true)
-                print("success", task)
+                realm.add(obj, update: true)
+                print("success", obj)
             }
             
         /*} catch {
