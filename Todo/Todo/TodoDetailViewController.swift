@@ -11,9 +11,8 @@ import UIKit
 import RealmSwift
 
 class TodoDetailViewController: UIViewController {
-    let utils = RealmUtils()
     let opTask = operateTask()
-    var cellRowNumber : Int!
+    var cellRowNumber : Int = 0
     
 //    var tasks : Results<NumberedTask>!
     var titleText : String? //TodoListViewControllerから受け取る用
@@ -23,7 +22,7 @@ class TodoDetailViewController: UIViewController {
     @IBOutlet weak var textView: UITextView!
     
     @IBAction func writeRealm() {
-        opTask.writeToRealm(self.titleView!.text!, self.textView!.text!, cellRowNumber!)
+        opTask.writeToRealm(self.titleView.text!, self.textView.text!, cellRowNumber)
     }
 
     override func viewDidLoad() {

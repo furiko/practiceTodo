@@ -11,56 +11,42 @@ import RealmSwift
 
 class RealmUtils {
     lazy var realm = try! Realm()
-    var tasks : Results<NumberedTask>!
-    
-/*    func getRealmAllData(){
-        
-//            let realm = try Realm()
-        let results = realm.objects(NumberedTask.self)
-        print("Realm全データ", results.count)
-        print(results)
-        
-    }*/
-    
-    func getRealmData(_ number: Int, _ tasks: Results<NumberedTask> ) -> NumberedTask {
-        return tasks[number]
+
+    func writeToRealm(_ obj: NumberedTask) {//Write(Update)
+        try! realm.write {
+            realm.add(obj, update: true)    //updateも新規作成もできる
+            print("success", obj)
+        }
+    }
+
+    //make Realm内の指定したデータのみ削除
+    func delete(obj: Object) {  //Delete a data
+        try! realm.write {
+            realm.delete(obj)
+        }
     }
     
-    func writeToRealm(_ obj: NumberedTask) {
-//        do {
-            //            let realm = try Realm()
-            /*let task = NumberedTask()
-            
-            task.title = title
-            task.content = content
-            task.id = id*/
-            
-            try! realm.write {
-                realm.add(obj, update: true)
-                print("success", obj)
-            }
-            
-        /*} catch {
-            print("Errorです")
-            /*var config = Realm.Configuration()
-             config.deleteRealmIfMigrationNeeded = true
-             let realm = try! Realm(configuration: config)*/
-        }*/
+    func deleteRealm(){ //DeleteAll
+        try! realm.write {
+            realm.deleteAll()
+            print("success deleteAll")
+        }
     }
     
-    func deleteRealm(){
-//        do {  //reset all Todo task
-//            let realm = try Realm()
-            try! realm.write {
-                realm.deleteAll()
-                print("success deleteAll")
-            }
-        /*}catch {
-            print("failed to deleteAll")
-        }*/
-    }
-    
-    func getResults() -> Results<NumberedTask> {
+    func getResults() -> Results<NumberedTask> {//Get
+        //Realmに登録されたNumberedTask型のデータを全取得
+        //NumberedTask以外の型も返せるような一般的な書き方が分からない
         return realm.objects(NumberedTask.self)
     }
+    /*
+    //一般的に書こうとするとエラーになってしまう
+
+    func getResults(obj: Object) -> Results<obj> {//GetAll
+        //Realmに登録されたNumberedTask型のデータを全取得
+        //NumberedTask以外の型も返せるような一般的な書き方が分からない
+        return realm.objects(obj.self)  ←//Cannot convert value of type 'Object' to expected argument type 'Object.Type'
+    }
+    */
+    
+    //Insertion    実装方法が分からない
 }
