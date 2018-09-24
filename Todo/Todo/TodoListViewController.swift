@@ -12,9 +12,9 @@ import RealmSwift
 
 class TodoListViewController: UIViewController {
     @IBOutlet weak var addButton: UIButton!
-    var opTask = operateTask()
+    var opTask = NumberedTask()
     var tasks : Results<NumberedTask>!
-    var rowNumber :Int = 0
+    var rowNumber = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,7 +40,7 @@ class TodoListViewController: UIViewController {
     }
 }
 
-extension TodoListViewController : UITableViewDelegate {
+extension TodoListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) { //prepare
         rowNumber = indexPath.row //選択したcellの行数
         print("rowNumber = ", rowNumber)
@@ -48,7 +48,7 @@ extension TodoListViewController : UITableViewDelegate {
     }
 }
 
-extension TodoListViewController : UITableViewDataSource {
+extension TodoListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return tasks.count
     }
