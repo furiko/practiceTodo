@@ -1,0 +1,12 @@
+##進捗1
+
+#### ファイルの分類
+新しくNumberedTask.swiftとRealmUtils.swiftを作成しました.
+RealmUtilsでRealmへのGet,Update,Deleteなどを実装しました.ただ、Insertionのやり方が分からなかったため未実装なのと,Getメソッドをどんな型でも受け付けられるようにする方法が分からなかったので未実装です.
+NumberedTask内ではNumberedTaskクラスの生成,ViewControllerとのデータの受け渡し,RealmUtilsとのやり取りに必要なメソッドを実装しました.
+
+#### TodoListViewController.swift
+extensionを使って,UIViewController,UITableViewDelegate,UITableViewDataSourceのブロックに分離して記述し直しました.
+
+#### TodoDetailViewController.swift
+titleが空欄の際に、NumberedTask.swift内のRealmUtilsへRealmにwriteを依頼するメソッド内でtitleが空欄の際にRealmUtilsへwriteを依頼しないようにしました.

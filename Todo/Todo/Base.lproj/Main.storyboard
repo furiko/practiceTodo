@@ -97,8 +97,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="OK"/>
                                 <connections>
-                                    <action selector="writeRealm" destination="7aZ-q1-fSq" eventType="touchUpInside" id="7aj-sE-LaH"/>
-                                    <segue destination="buH-mH-GMG" kind="presentation" id="PLX-ae-9cJ"/>
+                                    <action selector="tapOKButton" destination="7aZ-q1-fSq" eventType="touchUpInside" id="fbA-Wf-0jp"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -133,7 +132,7 @@
         <!--Todo List View Controller-->
         <scene sceneID="zr1-qR-nuS">
             <objects>
-                <viewController id="buH-mH-GMG" customClass="TodoListViewController" customModule="Todo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TodoList" id="buH-mH-GMG" customClass="TodoListViewController" customModule="Todo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="x8a-zk-Nzy">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -195,7 +194,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="PLX-ae-9cJ"/>
         <segue reference="XSq-b2-dBm"/>
     </inferredMetricsTieBreakers>
 </document>
