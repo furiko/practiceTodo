@@ -18,8 +18,8 @@ final class NumberedTask: Object { //NumberedTaskクラスにprimaryKeyを実装
     
     //以降NumberedTask操作用のメソッド達
     var tasks: Results<NumberedTask>!
-    func getTask(_ number: Int) -> NumberedTask{    //Realmに登録されているTodoリストの中から指定したidのTaskを取得
-        
+    func getTask(_ number: Int) -> NumberedTask {    //Realmに登録されているTodoリストの中から指定したidのTaskを取得
+
         return tasks[number]
     }
     
@@ -30,12 +30,8 @@ final class NumberedTask: Object { //NumberedTaskクラスにprimaryKeyを実装
         task.content = content
         task.id = id
         
-        if task.title != "" {
-            print("書き込み")
-            RealmUtils.writeToRealm(task)
-        } else {
-            print("taskのtitleが入力されていません")
-        }
+        print("書き込み")
+        RealmUtils.writeToRealm(task)
     }
     
     func deleteFromRealm(task: NumberedTask) {
@@ -45,7 +41,8 @@ final class NumberedTask: Object { //NumberedTaskクラスにprimaryKeyを実装
     func getAllTask() -> Results<NumberedTask> {    //Realmに登録されているTodoリストを一括取得
         if tasks == nil {   //初回のみtasksがnilなのでrealmから取得
             //operateTaskクラスでNumberedTaskのインスタンスを操作していた時はtasksはinitで取得していたが、realmのクラス内でinitはoverrideできないようなので代わりの措置
-            tasks = RealmUtils.getResults()
+            let Task = NumberedTask()
+            tasks = RealmUtils.getResults(obj:Task)
         }
         return tasks
     }
